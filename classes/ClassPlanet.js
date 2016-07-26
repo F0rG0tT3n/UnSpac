@@ -4,11 +4,19 @@ const NUM_OF_MOONS_MIN = 0;
 const NUM_OF_MOONS_MAX = 3;
 
 function randomNumber (a, b) {
-  return Math.floor (Math.random() * (b - a) + a);
+  return Math.floor (Math.random() * (b - a + 1) + a);
+}
+
+function randomMoons(moons) {
+  temp = randomNumber(NUM_OF_MOONS_MIN, NUM_OF_MOONS_MAX);
+
+  for (var i = 0; i < temp; i++) {
+    const classMoon = new ClassMoon;
+    moons.push(classMoon);
+  }
 }
 
 class ClassPlanet {
-
   constructor(size) {
     this.age = randomNumber(1,1000);
     this.size = randomNumber(1,100);
@@ -20,12 +28,7 @@ class ClassPlanet {
     this.color = [randomNumber(0,255),randomNumber(0,255),randomNumber(0,255)];
 
     this.moons = [];
-    this.temp = randomNumber(NUM_OF_MOONS_MIN, NUM_OF_MOONS_MAX);
-
-    for (var i = 0; i < this.temp; i++) {
-      const classMoon = new ClassMoon;
-      this.moons.push(classMoon);
-    }
+    randomMoons(this.moons);
   }
 }
 
